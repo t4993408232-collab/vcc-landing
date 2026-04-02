@@ -134,20 +134,38 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0
 .selector__logo {
     margin-bottom: 20px;
     position: relative;
-    opacity: 0;
-    animation: slideUp 0.8s 0.3s forwards;
     width: clamp(280px, 50vw, 480px);
 }
-.selector__logo svg {
-    width: 100%;
-    height: auto;
+.selector__logo svg { width: 100%; height: auto; }
+/* Bracket entrance: slide inward from edges */
+.selector__logo .br-l {
+    opacity: 0;
+    animation: bracketInL 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards, bracketPulse 3s 1.2s ease-in-out infinite alternate;
 }
-.selector__logo .logo-bracket {
-    animation: bracketGlow 3s ease-in-out infinite alternate;
+.selector__logo .br-r {
+    opacity: 0;
+    animation: bracketInR 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) forwards, bracketPulse 3s 1.2s ease-in-out infinite alternate;
 }
-@keyframes bracketGlow {
-    0% { opacity: 0.85; }
-    100% { opacity: 1; text-shadow: 0 0 18px rgba(114,255,46,0.5); }
+/* VCC text: fade in after brackets land */
+.selector__logo .logo-vcc {
+    opacity: 0;
+    animation: textReveal 0.5s 0.65s ease forwards;
+}
+@keyframes bracketInL {
+    from { opacity: 0; transform: translateX(-30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes bracketInR {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes textReveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bracketPulse {
+    0%   { opacity: 0.85; }
+    100% { opacity: 1; }
 }
 .selector__logo-sub {
     display: flex;
@@ -155,7 +173,7 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0
     gap: 16px;
     margin-top: 6px;
     opacity: 0;
-    animation: slideUp 0.6s 0.5s forwards;
+    animation: slideUp 0.6s 0.85s forwards;
 }
 .selector__logo-sub span {
     font-family: var(--font-logo);
@@ -420,12 +438,10 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0
     <div class="selector__badge" data-i18n data-ru="BRICS 2026 • Официальное мероприятие" data-en="BRICS 2026 • Official Event">BRICS 2026 • Официальное мероприятие</div>
 
     <div class="selector__logo">
-        <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
-            <text font-family="'Courier New', Courier, monospace" font-weight="700" font-size="96" y="98">
-                <tspan x="0" fill="#72FF2E" class="logo-bracket">{</tspan>
-                <tspan fill="#FFFFFF" dx="-6">VCC</tspan>
-                <tspan fill="#72FF2E" class="logo-bracket" dx="-6">}</tspan>
-            </text>
+        <svg viewBox="0 0 272 94" xmlns="http://www.w3.org/2000/svg">
+            <text class="br-l" x="4" y="82" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="86" fill="#72FF2E">{</text>
+            <text class="logo-vcc" x="56" y="82" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="86" fill="#ffffff">VCC</text>
+            <text class="br-r" x="212" y="82" font-family="'Courier New',Courier,monospace" font-weight="700" font-size="86" fill="#72FF2E">}</text>
         </svg>
     </div>
     <div class="selector__logo-sub">
