@@ -516,7 +516,6 @@ html:not([data-theme="dark"]) .footer__dt-logo--dark { display: inline; }
         </p>
         <div class="hero__actions">
             <a href="#contact" class="btn btn--white btn--lg">Стать партнёром</a>
-            <a href="files/VCC_Partner-Deck.pdf" class="btn btn--ghost btn--lg" target="_blank">Скачать презентацию</a>
         </div>
         <div class="hero__stats">
             <div class="hero__stat">
@@ -904,7 +903,11 @@ html:not([data-theme="dark"]) .footer__dt-logo--dark { display: inline; }
             <h2 class="section__title">Стать партнёром<span class="section__title-code">async function becomePartner() {</span></h2>
         </div>
         <div class="contact__wrapper">
-            <form class="contact__form" id="partnerForm">
+            <form class="contact__form" id="partnerForm" action="https://formsubmit.co/info@doctorteam.ru" method="POST">
+                <input type="hidden" name="_subject" value="VCC Landing — новая заявка на партнёрство">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none">
                 <div class="form__row">
                     <div class="form__group">
                         <label class="form__label"><span class="code-keyword">const</span> name <span class="code-op">=</span></label>
@@ -957,9 +960,12 @@ html:not([data-theme="dark"]) .footer__dt-logo--dark { display: inline; }
                 </button>
             </form>
             <div class="contact__aside">
-                <a href="files/VCC_Partner-Deck.pdf" class="btn btn--outline" target="_blank">Скачать презентацию</a>
                 <div class="contact__direct">
-                    <div class="contact__direct-label"><span class="code-comment">// прямой контакт</span></div>
+                    <div class="contact__direct-label"><span class="code-comment">// email</span></div>
+                    <a href="mailto:info@doctorteam.ru" class="contact__telegram">info@doctorteam.ru</a>
+                </div>
+                <div class="contact__direct">
+                    <div class="contact__direct-label"><span class="code-comment">// telegram</span></div>
                     <a href="https://t.me/event_doctor" class="contact__telegram" target="_blank">@event_doctor</a>
                 </div>
             </div>
@@ -1149,9 +1155,16 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
             else{inp.style.borderColor='';if(inp.type==='checkbox')inp.closest('.form__checkbox').style.color='';}
         });
         if(!valid) return;
-        var fd=new FormData(form),data={};fd.forEach(function(v,k){data[k]=v;});
-        form.style.display='none'; success.classList.add('visible');
-        console.log('Partnership form submitted:',data);
+        var fd=new FormData(form);
+        fetch('https://formsubmit.co/ajax/info@doctorteam.ru', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json','Accept':'application/json'},
+            body: JSON.stringify(Object.fromEntries(fd))
+        }).then(function(r){return r.json();}).then(function(){
+            form.style.display='none'; success.classList.add('visible');
+        }).catch(function(){
+            form.style.display='none'; success.classList.add('visible');
+        });
     });
     form.querySelectorAll('.form__input').forEach(function(inp){inp.addEventListener('focus',function(){inp.style.borderColor='';});});
 })();
