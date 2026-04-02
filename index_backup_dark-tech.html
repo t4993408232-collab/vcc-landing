@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Первый международный чемпионат по вайб-кодингу | Партнёрство</title>
+    <meta name="description" content="Станьте партнёром первого в мире офлайн-чемпионата по вайб-кодингу. 4 000 участников, 8–12 брендированных коворков, деловая программа БРИКС. Москва, октябрь 2026.">
+    <meta property="og:title" content="Первый международный чемпионат по вайб-кодингу">
+    <meta property="og:description" content="Станьте партнёром первого в мире офлайн-чемпионата по вайб-кодингу. 4 000 участников, Москва, октябрь 2026.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== SHARED TOKENS ===== */
+:root {
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --container: 1200px;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-hero: #0f0a1a;
+    --text-hero: #f0f0ff;
+}
+
+/* ===== LIGHT THEME (default) ===== */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f3ff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f9f7ff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #555577;
+    --text-muted: #8888a0;
+    --accent-purple: #7c3aed;
+    --accent-blue: #2563eb;
+    --accent-cyan: #0891b2;
+    --accent-green: #16a34a;
+    --accent-pink: #db2777;
+    --accent-orange: #ea580c;
+    --accent-yellow: #ca8a04;
+    --gradient-main: linear-gradient(135deg, #7c3aed 0%, #2563eb 50%, #0891b2 100%);
+    --card-border: rgba(124, 58, 237, 0.12);
+    --card-shadow: 0 2px 16px rgba(124, 58, 237, 0.06);
+    --header-bg: rgba(255,255,255,0.85);
+    --header-border: rgba(124, 58, 237, 0.08);
+}
+
+/* ===== DARK THEME ===== */
+html[data-theme="dark"] {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: #16161f;
+    --bg-card-hover: #1c1c2a;
+    --bg-hero: #0a0a0f;
+    --text-primary: #e8e8f0;
+    --text-secondary: #8888a0;
+    --text-muted: #555570;
+    --accent-purple: #a855f7;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-green: #22c55e;
+    --accent-pink: #ec4899;
+    --accent-orange: #f97316;
+    --accent-yellow: #eab308;
+    --gradient-main: linear-gradient(135deg, #a855f7 0%, #3b82f6 50%, #06b6d4 100%);
+    --card-border: rgba(168, 85, 247, 0.12);
+    --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    --header-bg: rgba(10, 10, 15, 0.9);
+    --header-border: rgba(168, 85, 247, 0.1);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-sans); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; transition: background 0.4s, color 0.4s; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+/* ===== CODE SYNTAX ===== */
+.code-keyword { color: var(--accent-purple); font-family: var(--font-mono); font-weight: 700; }
+.code-var { color: var(--accent-cyan); font-family: var(--font-mono); }
+.code-func { color: var(--accent-blue); font-family: var(--font-mono); }
+.code-string { color: var(--accent-green); font-family: var(--font-mono); }
+.code-num { color: var(--accent-orange); font-family: var(--font-mono); font-weight: 700; }
+.code-op { color: var(--accent-pink); font-family: var(--font-mono); }
+.code-comment { color: var(--text-muted); font-family: var(--font-mono); font-style: italic; }
+
+/* ===== BUTTONS ===== */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; padding: 14px 32px; border-radius: var(--radius); border: 2px solid transparent; cursor: pointer; transition: var(--transition); white-space: nowrap; }
+.btn--sm { padding: 10px 20px; font-size: 0.85rem; }
+.btn--lg { padding: 18px 40px; font-size: 1.05rem; }
+.btn--primary { background: var(--gradient-main); color: #fff; border: none; }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35); }
+.btn--glow { position: relative; }
+.btn--glow::before { content: ''; position: absolute; inset: -2px; border-radius: var(--radius); background: var(--gradient-main); z-index: -1; filter: blur(15px); opacity: 0.4; transition: var(--transition); }
+.btn--glow:hover::before { opacity: 0.7; filter: blur(20px); }
+.btn--outline { background: transparent; color: var(--text-primary); border: 2px solid var(--card-border); }
+.btn--outline:hover { border-color: var(--accent-purple); background: rgba(124, 58, 237, 0.05); transform: translateY(-2px); }
+.btn--white { background: #fff; color: #1a1a2e; border: none; font-weight: 700; }
+.btn--white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,255,255,0.2); }
+.btn--ghost { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+.btn--ghost:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+/* ===== HEADER ===== */
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 14px 0; transition: var(--transition); }
+.header.scrolled { background: var(--header-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--header-border); padding: 10px 0; }
+.header__inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; }
+.header__logo { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 2px; }
+.logo__bracket { color: var(--accent-purple); }
+.logo__text { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header__nav { display: flex; gap: 24px; margin-left: auto; }
+.nav__link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); transition: var(--transition); position: relative; }
+.nav__link:hover { color: var(--accent-purple); }
+.nav__link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gradient-main); transition: var(--transition); }
+.nav__link:hover::after { width: 100%; }
+/* Header in hero zone — white text */
+.header:not(.scrolled) .nav__link { color: rgba(255,255,255,0.6); }
+.header:not(.scrolled) .nav__link:hover { color: #fff; }
+.header:not(.scrolled) .burger span { background: #fff; }
+
+.header__right { display: flex; align-items: center; gap: 12px; margin-left: 12px; }
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle { background: var(--bg-secondary); border: 1px solid var(--card-border); border-radius: 999px; width: 48px; height: 28px; cursor: pointer; position: relative; transition: var(--transition); flex-shrink: 0; font-size: 0; }
+.header:not(.scrolled) .theme-toggle { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); }
+.theme-toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-purple); transition: left 0.3s, background 0.3s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+html[data-theme="dark"] .theme-toggle::after { left: 23px; background: var(--accent-yellow); }
+.theme-toggle__sun, .theme-toggle__moon { position: absolute; top: 50%; width: 12px; height: 12px; transform: translateY(-50%); pointer-events: none; }
+.theme-toggle__sun { left: 6px; opacity: 0; }
+.theme-toggle__moon { right: 6px; opacity: 1; }
+html[data-theme="dark"] .theme-toggle__sun { opacity: 1; }
+html[data-theme="dark"] .theme-toggle__moon { opacity: 0; }
+
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.burger span { display: block; width: 24px; height: 2px; background: var(--text-primary); transition: var(--transition); border-radius: 2px; }
+.burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ===== HERO (always dark) ===== */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 140px 24px 80px; background: var(--bg-hero); color: var(--text-hero); }
+#hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(37,99,235,0.1) 0%, transparent 60%); z-index: 1; }
+.hero__content { position: relative; z-index: 2; text-align: center; max-width: 820px; }
+
+.hero__date { font-family: var(--font-mono); font-size: 0.9rem; color: rgba(255,255,255,0.5); margin-bottom: 28px; letter-spacing: 2px; text-transform: uppercase; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards; }
+
+.hero__title { font-family: var(--font-sans); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.02em; opacity: 0; animation: fadeInUp 0.8s 0.5s forwards; }
+.hero__title-gradient { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.hero__subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeInUp 0.8s 0.7s forwards; }
+
+.hero__actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-bottom: 56px; opacity: 0; animation: fadeInUp 0.8s 0.9s forwards; }
+
+.hero__stats { display: flex; justify-content: center; gap: 48px; opacity: 0; animation: fadeInUp 0.8s 1.1s forwards; }
+.hero__stat { text-align: center; }
+.hero__stat-num { font-family: var(--font-mono); font-size: 2rem; font-weight: 800; color: #fff; }
+.hero__stat-label { font-family: var(--font-mono); font-size: 0.7rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+.hero__countdown { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 48px; opacity: 0; animation: fadeInUp 0.8s 1.3s forwards; }
+.countdown__item { text-align: center; }
+.countdown__num { font-family: var(--font-mono); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: #fff; display: block; min-width: 56px; }
+.countdown__label { font-family: var(--font-mono); font-size: 0.65rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1px; }
+.countdown__sep { font-family: var(--font-mono); font-size: 1.5rem; color: var(--accent-purple); opacity: 0.4; margin-top: -16px; }
+
+/* ===== SECTIONS ===== */
+.section { padding: 100px 0; position: relative; transition: background 0.4s; }
+.section--alt { background: var(--bg-secondary); }
+
+.section__header { margin-bottom: 48px; padding-left: 20px; border-left: 4px solid transparent; border-image: var(--gradient-main) 1; }
+.section__label { margin-bottom: 6px; font-size: 0.85rem; }
+.section__title { font-family: var(--font-mono); font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0; font-weight: 600; line-height: 1.4; }
+.section__title-close { font-family: var(--font-mono); font-size: clamp(1.2rem, 2.5vw, 1.7rem); margin-top: 40px; font-weight: 400; color: var(--text-muted); }
+/* Standalone labels (no header wrapper) */
+.section > .container > .section__label:first-child { margin-bottom: 6px; }
+.section > .container > .section__label + .section__title { margin-bottom: 40px; }
+
+/* ===== REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== TREND ===== */
+.trend__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+.trend__card { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 28px 20px; text-align: center; transition: var(--transition); box-shadow: var(--card-shadow); }
+.trend__card:hover { border-color: var(--accent-purple); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124,58,237,0.1); }
+.trend__num { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline; }
+.trend__unit { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline; }
+.trend__num-text { font-family: var(--font-mono); font-size: 1.3rem; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+.trend__text { color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px; line-height: 1.5; }
+.trend__src { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); display: block; margin-top: 10px; }
+.trend__footer { text-align: center; font-size: 1.05rem; line-height: 1.6; }
+
+/* ===== FORMAT ===== */
+.format__timeline { display: flex; align-items: flex-start; gap: 0; }
+.format__stage { flex: 1; background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 28px 20px; transition: var(--transition); box-shadow: var(--card-shadow); }
+.format__stage:hover { border-color: var(--accent-purple); transform: translateY(-4px); }
+.format__icon { width: 44px; height: 44px; color: var(--accent-purple); margin-bottom: 14px; }
+.format__stage-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+.format__stage h3 { font-family: var(--font-mono); font-size: 1rem; margin-bottom: 14px; }
+.format__stage li { font-size: 0.85rem; color: var(--text-secondary); padding: 5px 0 5px 16px; position: relative; line-height: 1.5; }
+.format__stage li::before { content: '>'; position: absolute; left: 0; color: var(--accent-purple); font-family: var(--font-mono); }
+.format__connector { display: flex; align-items: center; padding: 0 6px; padding-top: 50px; }
+.format__connector span { display: block; width: 32px; height: 2px; background: var(--gradient-main); position: relative; }
+.format__connector span::after { content: '\2192'; position: absolute; right: -8px; top: -10px; color: var(--accent-purple); font-family: var(--font-mono); }
+
+/* ===== COWORKS ===== */
+.coworks__subtitle { font-size: 1.05rem; color: var(--text-secondary); max-width: 750px; line-height: 1.7; margin-bottom: 44px; }
+.coworks__scheme { margin-bottom: 44px; }
+.scheme__title { margin-bottom: 16px; }
+.scheme__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.scheme__zone { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 20px 14px; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--card-shadow); }
+.scheme__zone::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+.scheme__zone--dev::after { background: var(--accent-purple); }
+.scheme__zone--mentor::after { background: var(--accent-blue); }
+.scheme__zone--rest::after { background: var(--accent-cyan); }
+.scheme__zone--food::after { background: var(--accent-green); }
+.scheme__zone--brand::after { background: var(--accent-pink); }
+.scheme__zone:hover { transform: translateY(-4px); border-color: var(--accent-purple); }
+.scheme__zone-icon { width: 36px; height: 36px; margin: 0 auto 10px; color: var(--accent-purple); }
+.scheme__zone-name { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
+.scheme__zone-size { font-size: 0.75rem; color: var(--text-muted); }
+
+.coworks__benefits { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 28px; font-family: var(--font-mono); font-size: 0.85rem; line-height: 2; margin-bottom: 36px; box-shadow: var(--card-shadow); }
+.benefit__item--value { padding-left: 24px; }
+.coworks__cta { text-align: center; }
+
+/* ===== BRICS ===== */
+.brics__desc { font-size: 1rem; color: var(--text-secondary); max-width: 700px; line-height: 1.7; margin-bottom: 36px; }
+.brics__days { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+.brics__day { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 24px; box-shadow: var(--card-shadow); }
+.brics__day-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+.brics__day-theme { font-size: 1rem; }
+.brics__vip { background: var(--bg-secondary); border-left: 3px solid var(--accent-purple); padding: 14px 20px; margin-bottom: 28px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--text-secondary); font-size: 0.95rem; }
+.brics__flags { display: flex; flex-wrap: wrap; gap: 10px; }
+.flag-tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 999px; color: var(--text-secondary); }
+
+/* ===== EXPO ===== */
+.expo__desc { font-size: 1rem; color: var(--text-secondary); margin-bottom: 28px; }
+.expo__stands { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+.expo__stand { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 22px; text-align: center; transition: var(--transition); box-shadow: var(--card-shadow); }
+.expo__stand:hover { border-color: var(--accent-blue); transform: translateY(-4px); }
+.expo__stand-type { font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem; color: var(--accent-blue); margin-bottom: 6px; }
+.expo__stand-size { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); }
+.expo__cta { text-align: center; }
+
+/* ===== STATS ===== */
+.stats__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.stats__item { text-align: center; padding: 28px; background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); transition: var(--transition); box-shadow: var(--card-shadow); }
+.stats__item:hover { border-color: var(--accent-purple); transform: translateY(-4px); }
+.stats__num, .stats__num-text { font-family: var(--font-mono); font-size: 2.8rem; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline; }
+.stats__plus { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--accent-purple); display: inline; }
+.stats__label { color: var(--text-secondary); font-size: 0.85rem; margin-top: 6px; }
+
+/* ===== PARTNERS ===== */
+.partners__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.partner-card { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 24px 20px; transition: var(--transition); display: flex; flex-direction: column; box-shadow: var(--card-shadow); }
+.partner-card:hover { border-color: var(--accent-purple); transform: translateY(-4px); }
+.partner-card--featured { border-color: var(--accent-purple); background: linear-gradient(180deg, rgba(124,58,237,0.04) 0%, var(--bg-card) 100%); }
+.partner-card__badge { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-orange); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.partner-card__title { font-family: var(--font-mono); font-size: 1rem; margin-bottom: 14px; color: var(--accent-purple); }
+.partner-card__list { flex-grow: 1; margin-bottom: 18px; }
+.partner-card__list li { font-size: 0.82rem; color: var(--text-secondary); padding: 4px 0 4px 18px; position: relative; line-height: 1.5; }
+.partner-card__list li::before { content: '\2713'; position: absolute; left: 0; color: var(--accent-green); font-size: 0.8rem; }
+
+/* ===== VENUE ===== */
+.venue__content { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.venue__placeholder { background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(37,99,235,0.08)); border: 1px solid var(--card-border); border-radius: var(--radius); aspect-ratio: 16/10; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.venue__placeholder-text { font-family: var(--font-mono); font-size: 3.5rem; font-weight: 800; background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.venue__placeholder-sub { font-family: var(--font-mono); color: var(--text-muted); font-size: 1.1rem; }
+.venue__detail { font-family: var(--font-mono); font-size: 0.95rem; padding: 9px 0; border-bottom: 1px solid var(--card-border); }
+.venue__zones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.zone-tag { font-family: var(--font-mono); font-size: 0.75rem; padding: 6px 12px; background: var(--bg-secondary); border: 1px solid var(--card-border); border-radius: 999px; }
+
+/* ===== ORGANIZER ===== */
+.organizer__content { display: grid; grid-template-columns: 180px 1fr; gap: 36px; align-items: center; }
+.organizer__photo-placeholder { width: 180px; height: 180px; border-radius: 50%; background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(37,99,235,0.1)); border: 2px solid var(--card-border); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 2.5rem; font-weight: 800; color: var(--accent-purple); }
+.organizer__info h3 { font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 6px; }
+.organizer__info p { color: var(--text-secondary); margin-bottom: 6px; font-size: 0.95rem; }
+.organizer__founder { font-style: italic; color: var(--text-muted) !important; font-size: 0.9rem !important; }
+.organizer__clients { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.client-logo { font-family: var(--font-mono); font-size: 0.7rem; padding: 6px 14px; background: var(--bg-secondary); border: 1px solid var(--card-border); border-radius: var(--radius-sm); color: var(--text-secondary); transition: var(--transition); }
+.client-logo:hover { border-color: var(--accent-purple); color: var(--text-primary); }
+
+/* ===== CONTACT FORM ===== */
+.contact__wrapper { display: grid; grid-template-columns: 1fr 260px; gap: 44px; align-items: start; }
+.contact__form { display: flex; flex-direction: column; gap: 14px; }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form__group { display: flex; flex-direction: column; gap: 5px; }
+.form__group--full { grid-column: 1 / -1; }
+.form__label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+.form__input { font-family: var(--font-mono); font-size: 0.85rem; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius-sm); color: var(--text-primary); transition: var(--transition); outline: none; }
+.form__input:focus { border-color: var(--accent-purple); box-shadow: 0 0 0 3px rgba(124,58,237,0.08); }
+.form__input::placeholder { color: var(--text-muted); }
+.form__select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+.form__select option { background: var(--bg-card); color: var(--text-primary); }
+.form__textarea { resize: vertical; min-height: 70px; }
+.form__checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.8rem; color: var(--text-secondary); }
+.form__checkbox input { width: 18px; height: 18px; accent-color: var(--accent-purple); cursor: pointer; }
+.form__submit { width: 100%; margin-top: 6px; }
+.contact__aside { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 100px; }
+.contact__direct { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 18px; box-shadow: var(--card-shadow); }
+.contact__direct-label { margin-bottom: 10px; font-size: 0.8rem; }
+.contact__telegram { font-family: var(--font-mono); font-size: 1rem; color: var(--accent-blue); transition: var(--transition); display: block; }
+.contact__telegram:hover { color: var(--accent-purple); }
+.form__success { display: none; text-align: center; padding: 36px; margin-top: 16px; }
+.form__success.visible { display: block; animation: fadeInUp 0.5s forwards; }
+.form__success-icon { font-size: 2.5rem; margin-bottom: 14px; }
+.form__success-text { font-family: var(--font-mono); font-size: 1rem; }
+
+/* ===== FOOTER ===== */
+.footer { padding: 36px 0 20px; border-top: 1px solid var(--card-border); transition: background 0.4s; }
+.footer__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+.footer__left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer__org { display: flex; align-items: center; gap: 8px; }
+.footer__org-label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+.footer__copy { font-size: 0.75rem; color: var(--text-muted); }
+.footer__center { display: flex; gap: 16px; }
+.footer__link { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); transition: var(--transition); }
+.footer__link:hover { color: var(--accent-purple); }
+.footer__link--small { font-size: 0.7rem; color: var(--text-muted); }
+.footer__code { text-align: center; padding-top: 16px; border-top: 1px solid var(--card-border); font-size: 0.75rem; max-width: var(--container); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* ===== BRICS TOP BANNER ===== */
+.brics-banner { background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 100%); padding: 10px 0; border-bottom: 2px solid rgba(218, 165, 32, 0.3); position: relative; overflow: hidden; z-index: 1001; }
+.brics-banner__inner { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.brics-banner__logo { height: 48px; width: auto; flex-shrink: 0; }
+.brics-banner__text { font-family: var(--font-sans); font-size: 0.85rem; color: #e0d5c0; font-weight: 500; text-align: center; line-height: 1.4; }
+.brics-banner__text strong { color: #f5c842; font-weight: 700; font-size: 0.9rem; }
+.brics-banner__badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(245, 200, 66, 0.12); border: 1px solid rgba(245, 200, 66, 0.3); border-radius: 999px; padding: 5px 14px; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; color: #f5c842; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+@media (max-width: 768px) {
+    .brics-banner__inner { gap: 12px; }
+    .brics-banner__logo { height: 36px; }
+    .brics-banner__text { font-size: 0.75rem; }
+    .brics-banner__badge { font-size: 0.65rem; padding: 4px 10px; }
+}
+
+/* ===== PARTNER LOGOS BAR ===== */
+.logos-bar { padding: 28px 0; border-bottom: 1px solid var(--card-border); background: var(--bg-primary); overflow: hidden; }
+.logos-bar__track { display: flex; align-items: center; gap: 36px; justify-content: center; flex-wrap: wrap; }
+.logos-bar__item { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; padding: 8px 20px; border: 1px solid var(--card-border); border-radius: 999px; transition: var(--transition); letter-spacing: 0.5px; }
+.logos-bar__item:hover { color: var(--accent-purple); border-color: var(--accent-purple); }
+
+/* ===== FOOTER DT LOGO ===== */
+.footer__dt-logo { height: 32px; width: auto; opacity: 0.6; transition: var(--transition); }
+.footer__dt-logo:hover { opacity: 1; }
+html[data-theme="dark"] .footer__dt-logo--light { display: inline; }
+html[data-theme="dark"] .footer__dt-logo--dark { display: none; }
+html:not([data-theme="dark"]) .footer__dt-logo--light { display: none; }
+html:not([data-theme="dark"]) .footer__dt-logo--dark { display: inline; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .trend__grid { grid-template-columns: repeat(2, 1fr); }
+    .format__timeline { flex-direction: column; }
+    .format__connector { padding: 6px 0; justify-content: center; }
+    .format__connector span { width: 2px; height: 24px; }
+    .format__connector span::after { content: '\2193'; right: -10px; top: auto; bottom: -4px; }
+    .scheme__grid { grid-template-columns: repeat(3, 1fr); }
+    .expo__stands { grid-template-columns: repeat(2, 1fr); }
+    .stats__grid { grid-template-columns: repeat(2, 1fr); }
+    .partners__grid { grid-template-columns: repeat(2, 1fr); }
+    .venue__content { grid-template-columns: 1fr; gap: 28px; }
+    .organizer__content { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .organizer__clients { justify-content: center; }
+    .contact__wrapper { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .header__nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,15,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 999; }
+    .header__nav.active { display: flex; }
+    .header__nav.active .nav__link { color: #fff !important; font-size: 1.1rem; }
+    .header__cta { display: none; }
+    .burger { display: flex; z-index: 1001; }
+    .hero { padding: 110px 20px 60px; min-height: auto; }
+    .hero__stats { gap: 24px; }
+    .hero__stat-num { font-size: 1.5rem; }
+    .section { padding: 64px 0; }
+    .trend__grid { grid-template-columns: 1fr; }
+    .scheme__grid { grid-template-columns: 1fr 1fr; }
+    .expo__stands { grid-template-columns: 1fr 1fr; }
+    .stats__grid { grid-template-columns: 1fr; }
+    .partners__grid { grid-template-columns: 1fr; }
+    .form__row { grid-template-columns: 1fr; }
+    .brics__days { grid-template-columns: 1fr; }
+    .hero__countdown .countdown__num { font-size: 1.3rem; min-width: 44px; }
+    .footer__inner { flex-direction: column; text-align: center; }
+    .footer__left { flex-direction: column; }
+    .footer__center { flex-direction: column; gap: 10px; }
+}
+@media (max-width: 480px) {
+    .scheme__grid { grid-template-columns: 1fr; }
+    .expo__stands { grid-template-columns: 1fr; }
+    .hero__actions { flex-direction: column; align-items: center; }
+    .hero__actions .btn { width: 100%; }
+    .btn--sm { width: auto; }
+}
+
+::selection { background: rgba(124,58,237,0.2); color: inherit; }
+    </style>
+</head>
+<body>
+
+<!-- ===== BRICS BANNER ===== -->
+<div class="brics-banner">
+    <div class="container brics-banner__inner">
+        <img src="img/brics_logo.webp" alt="BRICS International Alliance" class="brics-banner__logo">
+        <div class="brics-banner__text">
+            <strong>При поддержке BRICS International Alliance</strong><br>
+            Официальное мероприятие деловой программы БРИКС 2026
+        </div>
+        <span class="brics-banner__badge">BRICS 2026</span>
+    </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+    <div class="header__inner">
+        <a href="#" class="header__logo">
+            <span class="logo__bracket">{</span>
+            <span class="logo__text">VCC</span>
+            <span class="logo__bracket">}</span>
+        </a>
+        <nav class="header__nav" id="nav">
+            <a href="#about" class="nav__link">О событии</a>
+            <a href="#format" class="nav__link">Формат</a>
+            <a href="#coworks" class="nav__link">Партнёрам</a>
+            <a href="#stats" class="nav__link">Цифры</a>
+            <a href="#contact" class="nav__link">Контакт</a>
+        </nav>
+        <div class="header__right">
+            <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                <svg class="theme-toggle__sun" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="4"/><path d="M10 1v2M10 17v2M1 10h2M17 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <svg class="theme-toggle__moon" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+            </button>
+            <a href="#contact" class="header__cta btn btn--sm btn--primary">Стать партнёром</a>
+        </div>
+        <button class="burger" id="burger" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero__content">
+        <div class="hero__date">17–18 октября 2026 &bull; Москва &bull; TAU</div>
+        <h1 class="hero__title">
+            Первый международный<br><span class="hero__title-gradient">чемпионат по вайб-кодингу</span>
+        </h1>
+        <p class="hero__subtitle">
+            Масштабное офлайн-событие на стыке хакатона, фестиваля и деловой конференции.
+            Участники из России и стран БРИКС решают реальные кейсы, используя ИИ для генерации кода.
+        </p>
+        <div class="hero__actions">
+            <a href="#contact" class="btn btn--white btn--lg">Стать партнёром</a>
+            <a href="files/VCC_Partner-Deck.pdf" class="btn btn--ghost btn--lg" target="_blank">Скачать презентацию</a>
+        </div>
+        <div class="hero__stats">
+            <div class="hero__stat">
+                <div class="hero__stat-num">4 000</div>
+                <div class="hero__stat-label">участников</div>
+            </div>
+            <div class="hero__stat">
+                <div class="hero__stat-num">8–12</div>
+                <div class="hero__stat-label">коворков</div>
+            </div>
+            <div class="hero__stat">
+                <div class="hero__stat-num">7 000 м²</div>
+                <div class="hero__stat-label">площадка</div>
+            </div>
+            <div class="hero__stat">
+                <div class="hero__stat-num">2 дня</div>
+                <div class="hero__stat-label">программа</div>
+            </div>
+        </div>
+        <div class="hero__countdown" id="countdown">
+            <div class="countdown__item">
+                <span class="countdown__num" id="cd-days">000</span>
+                <span class="countdown__label">дней</span>
+            </div>
+            <div class="countdown__sep">:</div>
+            <div class="countdown__item">
+                <span class="countdown__num" id="cd-hours">00</span>
+                <span class="countdown__label">часов</span>
+            </div>
+            <div class="countdown__sep">:</div>
+            <div class="countdown__item">
+                <span class="countdown__num" id="cd-mins">00</span>
+                <span class="countdown__label">минут</span>
+            </div>
+            <div class="countdown__sep">:</div>
+            <div class="countdown__item">
+                <span class="countdown__num" id="cd-secs">00</span>
+                <span class="countdown__label">секунд</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PARTNER LOGOS BAR ===== -->
+<div class="logos-bar">
+    <div class="container">
+        <div class="logos-bar__track">
+            <span class="logos-bar__item">Яндекс</span>
+            <span class="logos-bar__item">Сбер</span>
+            <span class="logos-bar__item">VK</span>
+            <span class="logos-bar__item">Т-Банк</span>
+            <span class="logos-bar__item">МТС</span>
+            <span class="logos-bar__item">Росатом</span>
+            <span class="logos-bar__item">Сибур</span>
+            <span class="logos-bar__item">Positive Technologies</span>
+            <span class="logos-bar__item">Kaspersky</span>
+            <span class="logos-bar__item">МФТИ</span>
+            <span class="logos-bar__item">ВШЭ</span>
+            <span class="logos-bar__item">Иннополис</span>
+        </div>
+    </div>
+</div>
+
+<!-- ===== TREND ===== -->
+<section class="section section--alt" id="about">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// вайб-кодинг — тренд №1</span></div>
+            <h2 class="section__title">Вайб-кодинг — <span class="code-func">тренд</span> №1</h2>
+        </div>
+        <div class="trend__grid">
+            <div class="trend__card reveal">
+                <div class="trend__num" data-target="92">0</div><div class="trend__unit">%</div>
+                <p class="trend__text">разработчиков в США используют ИИ-инструменты ежедневно</p>
+                <span class="trend__src">GitHub, 2025</span>
+            </div>
+            <div class="trend__card reveal">
+                <div class="trend__num" data-target="41">0</div><div class="trend__unit">%</div>
+                <p class="trend__text">мирового кода генерируется нейросетями</p>
+                <span class="trend__src">Anthropic, 2026</span>
+            </div>
+            <div class="trend__card reveal">
+                <div class="trend__num" data-target="53199">0</div>
+                <p class="trend__text">рекорд Гиннесса — участников онлайн-хакатона по вайб-кодингу</p>
+                <span class="trend__src">Cognizant</span>
+            </div>
+            <div class="trend__card reveal">
+                <div class="trend__num-text">«Слово года 2025»</div>
+                <p class="trend__text">Collins Dictionary присвоил статус термину vibe coding</p>
+                <span class="trend__src">Collins Dictionary</span>
+            </div>
+        </div>
+        <p class="trend__footer reveal">
+            <span class="code-string">"Масштабного офлайн-чемпионата по вайб-кодингу не существует. Мы делаем первый."</span>
+        </p>
+    </div>
+</section>
+
+<!-- ===== FORMAT ===== -->
+<section class="section" id="format">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// формат события</span></div>
+            <h2 class="section__title">event.<span class="code-func">getFormat</span>()</h2>
+        </div>
+        <div class="format__timeline">
+            <div class="format__stage reveal">
+                <div class="format__icon"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="format__stage-label">Этап 1</div>
+                <h3>Онлайн-отбор</h3>
+                <ul>
+                    <li><span class="code-num">8 000+</span> заявок → <span class="code-num">4 000</span> финалистов</li>
+                    <li>Участники решают кейсы удалённо за <span class="code-num">48</span> часов</li>
+                    <li>Оценка ИИ + модерация экспертами</li>
+                </ul>
+            </div>
+            <div class="format__connector"><span></span></div>
+            <div class="format__stage reveal">
+                <div class="format__icon"><svg viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="28" rx="4" stroke="currentColor" stroke-width="2"/><path d="M14 20l6 5-6 5M24 30h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="format__stage-label">Этап 2</div>
+                <h3>Офлайн-хакатон <span class="code-comment">// 2 дня</span></h3>
+                <ul>
+                    <li><span class="code-num">8–12</span> брендированных коворков в TAU</li>
+                    <li>Каждый коворк = ваш бренд + кейс + эксперты</li>
+                    <li>24-часовая работа, питание 24/7, менторство</li>
+                </ul>
+            </div>
+            <div class="format__connector"><span></span></div>
+            <div class="format__stage reveal">
+                <div class="format__icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 6l6 12h12l-10 8 4 12-12-8-12 8 4-12L6 18h12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+                <div class="format__stage-label">Этап 3</div>
+                <h3>Финал на главной сцене</h3>
+                <ul>
+                    <li>Питчи лучших команд перед Гранд-жюри</li>
+                    <li>Церемония награждения, призовой фонд</li>
+                    <li>Деловая программа с лидерами БРИКС</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== COWORKS ===== -->
+<section class="section section--alt" id="coworks">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// брендированные коворки</span></div>
+            <h2 class="section__title"><span class="code-keyword">class</span> <span class="code-var">BrandedCowork</span> {</h2>
+        </div>
+        <p class="coworks__subtitle reveal">
+            Каждый партнёр строит и брендирует собственный коворк — автономное рабочее пространство
+            с вашим кейсом, экспертами и фирменным стилем.
+            <span class="code-num">300–500</span> участников работают над вашей реальной бизнес-задачей <span class="code-num">24</span> часа.
+        </p>
+
+        <div class="coworks__scheme reveal">
+            <div class="scheme__title"><span class="code-comment">// схема коворка</span></div>
+            <div class="scheme__grid">
+                <div class="scheme__zone scheme__zone--dev">
+                    <div class="scheme__zone-icon"><svg viewBox="0 0 36 36" fill="none"><rect x="3" y="6" width="30" height="24" rx="3" stroke="currentColor" stroke-width="2"/><path d="M10 15l5 4-5 4M18 23h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <div class="scheme__zone-name">Зона разработки</div>
+                    <div class="scheme__zone-size">80–150 м²</div>
+                </div>
+                <div class="scheme__zone scheme__zone--mentor">
+                    <div class="scheme__zone-icon"><svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="12" r="6" stroke="currentColor" stroke-width="2"/><path d="M8 30c0-5.5 4.5-10 10-10s10 4.5 10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                    <div class="scheme__zone-name">Менторство</div>
+                    <div class="scheme__zone-size">3–5 экспертов</div>
+                </div>
+                <div class="scheme__zone scheme__zone--rest">
+                    <div class="scheme__zone-icon"><svg viewBox="0 0 36 36" fill="none"><path d="M6 24h24M6 24l3-12h18l3 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="28" r="2" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="28" r="2" stroke="currentColor" stroke-width="2"/></svg></div>
+                    <div class="scheme__zone-name">Зона отдыха</div>
+                    <div class="scheme__zone-size">пуфы, диваны</div>
+                </div>
+                <div class="scheme__zone scheme__zone--food">
+                    <div class="scheme__zone-icon"><svg viewBox="0 0 36 36" fill="none"><path d="M12 6v8c0 3.3 2.7 6 6 6s6-2.7 6-6V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20v10M12 30h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <div class="scheme__zone-name">Питание</div>
+                    <div class="scheme__zone-size">кейтеринг 24/7</div>
+                </div>
+                <div class="scheme__zone scheme__zone--brand">
+                    <div class="scheme__zone-icon"><svg viewBox="0 0 36 36" fill="none"><rect x="6" y="6" width="24" height="24" rx="3" stroke="currentColor" stroke-width="2"/><path d="M14 14l4 4-4 4M20 22h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <div class="scheme__zone-name">Брендинг</div>
+                    <div class="scheme__zone-size">баннеры, мерч</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coworks__benefits reveal">
+            <div class="section__label"><span class="code-func">getPartnerBenefits</span>() {</div>
+            <div class="benefits__list">
+                <div class="benefit__item"><span class="code-keyword">return</span> [</div>
+                <div class="benefit__item benefit__item--value"><span class="code-string">"Реальные решения вашей бизнес-задачи от 60–100 команд"</span>,</div>
+                <div class="benefit__item benefit__item--value"><span class="code-string">"Прямой контакт с 300–500 разработчиками (рекрутинг, HR-бренд)"</span>,</div>
+                <div class="benefit__item benefit__item--value"><span class="code-string">"Полный брендинг пространства (визуал, мерч, подсветка)"</span>,</div>
+                <div class="benefit__item benefit__item--value"><span class="code-string">"Ваши эксперты как менторы — демонстрация экспертизы"</span>,</div>
+                <div class="benefit__item benefit__item--value"><span class="code-string">"Презентация кейса на главной сцене перед 4 000 участников"</span>,</div>
+                <div class="benefit__item benefit__item--value"><span class="code-string">"Упоминание во всех промо-материалах и трансляциях"</span></div>
+                <div class="benefit__item">];</div>
+            </div>
+            <div class="section__label"><span class="code-op">}</span></div>
+        </div>
+
+        <div class="coworks__cta reveal">
+            <a href="#contact" class="btn btn--primary btn--glow btn--lg">Забронировать коворк</a>
+        </div>
+        <h2 class="section__title-close">}</h2>
+    </div>
+</section>
+
+<!-- ===== BRICS ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// деловая программа и БРИКС</span></div>
+            <h2 class="section__title"><span class="code-func">businessProgram</span>.<span class="code-func">init</span>()</h2>
+        </div>
+        <p class="brics__desc reveal">Параллельно с хакатоном — деловая программа с лидерами tech-индустрии стран БРИКС, представителями государственных структур и научного сообщества.</p>
+        <div class="brics__days reveal">
+            <div class="brics__day">
+                <div class="brics__day-label">День 1</div>
+                <div class="brics__day-theme"><span class="code-string">"Цифровой суверенитет и кадры"</span></div>
+            </div>
+            <div class="brics__day">
+                <div class="brics__day-label">День 2</div>
+                <div class="brics__day-theme"><span class="code-string">"Технологии и результаты"</span></div>
+            </div>
+        </div>
+        <div class="brics__vip reveal"><span class="code-keyword">VIP</span>-зона «Гостиная»: закрытые встречи инвесторов с командами, брифинги для прессы</div>
+        <div class="brics__flags reveal">
+            <span class="flag-tag">Россия</span><span class="flag-tag">Китай</span><span class="flag-tag">Индия</span><span class="flag-tag">Бразилия</span><span class="flag-tag">ЮАР</span><span class="flag-tag">Египет</span><span class="flag-tag">Эфиопия</span><span class="flag-tag">Иран</span><span class="flag-tag">ОАЭ</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXPO ===== -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// экспо-зона</span></div>
+            <h2 class="section__title"><span class="code-keyword">const</span> <span class="code-var">expoZone</span> <span class="code-op">=</span> {</h2>
+        </div>
+        <p class="expo__desc reveal">Выставочная площадка в центральном холле TAU — через неё проходят все <span class="code-num">4 000</span> участников.</p>
+        <div class="expo__stands reveal">
+            <div class="expo__stand"><div class="expo__stand-type">Премиум</div><div class="expo__stand-size">30–50 м²</div></div>
+            <div class="expo__stand"><div class="expo__stand-type">Стандарт</div><div class="expo__stand-size">15–25 м²</div></div>
+            <div class="expo__stand"><div class="expo__stand-type">Стартап</div><div class="expo__stand-size">6–9 м²</div></div>
+            <div class="expo__stand"><div class="expo__stand-type">Университет</div><div class="expo__stand-size">9–15 м²</div></div>
+        </div>
+        <div class="expo__cta reveal"><a href="#contact" class="btn btn--outline">Забронировать стенд</a></div>
+        <h2 class="section__title-close">}</h2>
+    </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="section" id="stats">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// цифры и охваты</span></div>
+            <h2 class="section__title"><span class="code-func">console</span>.<span class="code-func">log</span>(<span class="code-var">metrics</span>)</h2>
+        </div>
+        <div class="stats__grid">
+            <div class="stats__item reveal"><div class="stats__num" data-target="4000">0</div><div class="stats__label">участников офлайн</div></div>
+            <div class="stats__item reveal"><div class="stats__num" data-target="8000">0</div><div class="stats__plus">+</div><div class="stats__label">заявок (онлайн-этап)</div></div>
+            <div class="stats__item reveal"><div class="stats__num-text">8–12</div><div class="stats__label">брендированных коворков</div></div>
+            <div class="stats__item reveal"><div class="stats__num" data-target="200">0</div><div class="stats__plus">+ млн</div><div class="stats__label">потенциальные медиа-охваты</div></div>
+            <div class="stats__item reveal"><div class="stats__num-text">2</div><div class="stats__label">дня хакатон + деловая программа</div></div>
+            <div class="stats__item reveal"><div class="stats__num" data-target="7000">0</div><div class="stats__plus"> м²</div><div class="stats__label">площадка TAU</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PARTNERS ===== -->
+<section class="section section--alt" id="partners">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// категории партнёрства</span></div>
+            <h2 class="section__title"><span class="code-keyword">enum</span> <span class="code-var">PartnerType</span> {</h2>
+        </div>
+        <div class="partners__grid">
+            <div class="partner-card partner-card--featured reveal">
+                <div class="partner-card__badge">якорный формат</div>
+                <h3 class="partner-card__title">Коворк-партнёр</h3>
+                <ul class="partner-card__list">
+                    <li>Собственное пространство 80–150 м²</li>
+                    <li>Уникальный кейс для 300–500 участников</li>
+                    <li>3–5 ваших модераторов на площадке</li>
+                    <li>Полный брендинг, мерч</li>
+                    <li>Презентация кейса на главной сцене</li>
+                    <li>Логотип на всех материалах</li>
+                </ul>
+                <a href="#contact" class="btn btn--primary btn--sm">Подробнее</a>
+            </div>
+            <div class="partner-card reveal">
+                <h3 class="partner-card__title">Экспо-партнёр</h3>
+                <ul class="partner-card__list">
+                    <li>Стенд в центральном холле</li>
+                    <li>Демо-зона для ваших продуктов</li>
+                    <li>Контакт со всеми 4 000 участниками</li>
+                    <li>Логотип на сайте и в программе</li>
+                </ul>
+                <a href="#contact" class="btn btn--outline btn--sm">Подробнее</a>
+            </div>
+            <div class="partner-card reveal">
+                <h3 class="partner-card__title">Информационный партнёр</h3>
+                <ul class="partner-card__list">
+                    <li>Логотип на всех промо-материалах</li>
+                    <li>Аккредитация журналистов</li>
+                    <li>Контент для публикаций (эксклюзивы)</li>
+                    <li>Стенд в пресс-зоне</li>
+                </ul>
+                <a href="#contact" class="btn btn--outline btn--sm">Подробнее</a>
+            </div>
+            <div class="partner-card reveal">
+                <h3 class="partner-card__title">Университет-партнёр</h3>
+                <ul class="partner-card__list">
+                    <li>Стенд в экспо-зоне</li>
+                    <li>Квоты для студентов</li>
+                    <li>Участие в деловой программе</li>
+                    <li>Логотип в секции «Образование»</li>
+                </ul>
+                <a href="#contact" class="btn btn--outline btn--sm">Подробнее</a>
+            </div>
+        </div>
+        <h2 class="section__title-close">}</h2>
+    </div>
+</section>
+
+<!-- ===== VENUE ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// площадка</span></div>
+            <h2 class="section__title"><span class="code-var">venue</span>.<span class="code-func">getInfo</span>()</h2>
+        </div>
+        <div class="venue__content reveal">
+            <div class="venue__image">
+                <div class="venue__placeholder">
+                    <div class="venue__placeholder-text">TAU</div>
+                    <div class="venue__placeholder-sub">Москва</div>
+                </div>
+            </div>
+            <div class="venue__info">
+                <div class="venue__detail"><span class="code-keyword">name:</span> <span class="code-string">"TAU, Москва"</span></div>
+                <div class="venue__detail"><span class="code-keyword">area:</span> <span class="code-num">7 000</span> м²</div>
+                <div class="venue__detail"><span class="code-keyword">capacity:</span> <span class="code-num">4 000</span> человек</div>
+                <div class="venue__detail"><span class="code-keyword">screen:</span> LED <span class="code-num">200</span> м²</div>
+                <div class="venue__detail"><span class="code-keyword">style:</span> <span class="code-string">"индустриальная эстетика"</span></div>
+                <div class="venue__detail"><span class="code-keyword">date:</span> <span class="code-string">"17–18 октября 2026"</span></div>
+                <div class="venue__zones">
+                    <span class="zone-tag">Сцена</span>
+                    <span class="zone-tag">Коворки</span>
+                    <span class="zone-tag">Экспо</span>
+                    <span class="zone-tag">Гостиная</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ORGANIZER ===== -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// организатор</span></div>
+            <h2 class="section__title"><span class="code-keyword">import</span> { <span class="code-var">DoctorTeam</span> } <span class="code-keyword">from</span> <span class="code-string">"organizers"</span></h2>
+        </div>
+        <div class="organizer__content reveal">
+            <div class="organizer__photo"><div class="organizer__photo-placeholder"><span>DT</span></div></div>
+            <div class="organizer__info">
+                <h3><span class="code-var">DoctorTeam</span> — топ-5 event-агентств РФ</h3>
+                <p>Рейтинги АКМР, РРАР &bull; <span class="code-num">18+</span> лет опыта</p>
+                <p class="organizer__founder">Игорь Иванов — основатель, член Совета креативных индустрий при ТПП</p>
+                <div class="organizer__clients">
+                    <span class="client-logo">Яндекс</span><span class="client-logo">Сбер</span><span class="client-logo">Еврохим</span><span class="client-logo">Сибур</span><span class="client-logo">Росатом</span><span class="client-logo">Coca-Cola</span><span class="client-logo">Технониколь</span><span class="client-logo">Полюс Золото</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT FORM ===== -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section__header">
+            <div class="section__label"><span class="code-comment">// стать партнёром</span></div>
+            <h2 class="section__title"><span class="code-keyword">async function</span> <span class="code-func">becomePartner</span>() {</h2>
+        </div>
+        <div class="contact__wrapper">
+            <form class="contact__form" id="partnerForm">
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label"><span class="code-keyword">const</span> name <span class="code-op">=</span></label>
+                        <input type="text" name="name" class="form__input" placeholder="Имя и фамилия" required>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label"><span class="code-keyword">const</span> company <span class="code-op">=</span></label>
+                        <input type="text" name="company" class="form__input" placeholder="Компания" required>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label"><span class="code-keyword">const</span> position <span class="code-op">=</span></label>
+                        <input type="text" name="position" class="form__input" placeholder="Должность">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label"><span class="code-keyword">const</span> email <span class="code-op">=</span></label>
+                        <input type="email" name="email" class="form__input" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form__group">
+                        <label class="form__label"><span class="code-keyword">const</span> phone <span class="code-op">=</span></label>
+                        <input type="tel" name="phone" class="form__input" placeholder="Телефон">
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label"><span class="code-keyword">const</span> format <span class="code-op">=</span></label>
+                        <select name="format" class="form__input form__select">
+                            <option value="">Формат партнёрства</option>
+                            <option value="cowork">Коворк-партнёр</option>
+                            <option value="expo">Экспо-партнёр</option>
+                            <option value="info">Информационный партнёр</option>
+                            <option value="university">Университет-партнёр</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__group form__group--full">
+                    <label class="form__label"><span class="code-keyword">const</span> comment <span class="code-op">=</span></label>
+                    <textarea name="comment" class="form__input form__textarea" placeholder="Комментарий" rows="3"></textarea>
+                </div>
+                <div class="form__group form__group--full">
+                    <label class="form__checkbox">
+                        <input type="checkbox" name="consent" required>
+                        <span class="form__checkbox-text">Согласен на обработку персональных данных</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn--primary btn--glow btn--lg form__submit">
+                    <span class="code-func">await</span> submitPartnership()
+                </button>
+            </form>
+            <div class="contact__aside">
+                <a href="files/VCC_Partner-Deck.pdf" class="btn btn--outline" target="_blank">Скачать презентацию</a>
+                <div class="contact__direct">
+                    <div class="contact__direct-label"><span class="code-comment">// прямой контакт</span></div>
+                    <a href="https://t.me/event_doctor" class="contact__telegram" target="_blank">@event_doctor</a>
+                </div>
+            </div>
+        </div>
+        <div class="form__success" id="formSuccess">
+            <div class="form__success-icon">&#10003;</div>
+            <div class="form__success-text"><span class="code-string">"Спасибо! Мы свяжемся с вами в течение 24 часов"</span></div>
+        </div>
+        <h2 class="section__title-close">}</h2>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__left">
+            <a href="#" class="header__logo"><span class="logo__bracket">{</span><span class="logo__text">VCC</span><span class="logo__bracket">}</span></a>
+            <div class="footer__org">
+                <span class="footer__org-label">Организатор:</span>
+                <img src="img/doctorteam_logo_black.svg" alt="DoctorTeam" class="footer__dt-logo footer__dt-logo--dark">
+                <img src="img/doctorteam_logo_white.svg" alt="DoctorTeam" class="footer__dt-logo footer__dt-logo--light">
+            </div>
+            <p class="footer__copy">&copy; ООО «ДокторТим», 2026</p>
+        </div>
+        <div class="footer__center">
+            <a href="https://t.me/eventstory_by" target="_blank" class="footer__link">@eventstory_by</a>
+            <a href="https://t.me/event_doctor" target="_blank" class="footer__link">@event_doctor</a>
+        </div>
+        <div class="footer__right">
+            <a href="#" class="footer__link footer__link--small">Политика конфиденциальности</a>
+        </div>
+    </div>
+    <div class="footer__code"><span class="code-comment">// built with vibe coding</span></div>
+</footer>
+
+<script>
+/* ===== THEME TOGGLE ===== */
+(function() {
+    var toggle = document.getElementById('themeToggle');
+    var html = document.documentElement;
+    var saved = localStorage.getItem('vcc-theme');
+    if (saved) html.setAttribute('data-theme', saved);
+
+    toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('vcc-theme', next);
+    });
+})();
+
+/* ===== FLOATING CODE SYMBOLS ===== */
+(function() {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var symbols = [];
+    var w, h;
+    var codeChars = ['{','}','(',')',';','<','>','/','=','=>','[]','++','&&','||','!=','===','let','var','if','fn','AI','{}','()','//','/*','*/','0','1','import','async','await','const','return','true','false','null','class','def','print','for','while','try','catch'];
+    var colors = ['rgba(168,85,247,','rgba(59,130,246,','rgba(6,182,212,','rgba(34,197,94,','rgba(236,72,153,','rgba(249,115,22,'];
+
+    function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; }
+    function create() {
+        symbols = [];
+        var count = Math.min(Math.floor((w * h) / 18000), 70);
+        for (var i = 0; i < count; i++) {
+            symbols.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                vx: (Math.random() - 0.5) * 0.25,
+                vy: (Math.random() - 0.5) * 0.2 - 0.1,
+                char: codeChars[Math.floor(Math.random() * codeChars.length)],
+                size: 10 + Math.random() * 14,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                alpha: 0.06 + Math.random() * 0.14,
+                rotation: (Math.random() - 0.5) * 0.3,
+                rotSpeed: (Math.random() - 0.5) * 0.003,
+                wobble: Math.random() * Math.PI * 2,
+                wobbleSpeed: 0.005 + Math.random() * 0.01
+            });
+        }
+    }
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < symbols.length; i++) {
+            var s = symbols[i];
+            ctx.save();
+            ctx.translate(s.x, s.y);
+            ctx.rotate(s.rotation);
+            ctx.font = s.size + 'px JetBrains Mono, monospace';
+            ctx.fillStyle = s.color + s.alpha + ')';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(s.char, 0, 0);
+            ctx.restore();
+
+            s.x += s.vx + Math.sin(s.wobble) * 0.15;
+            s.y += s.vy;
+            s.rotation += s.rotSpeed;
+            s.wobble += s.wobbleSpeed;
+
+            if (s.x < -50) s.x = w + 50;
+            if (s.x > w + 50) s.x = -50;
+            if (s.y < -50) s.y = h + 50;
+            if (s.y > h + 50) s.y = -50;
+        }
+        requestAnimationFrame(draw);
+    }
+    resize(); create(); draw();
+    window.addEventListener('resize', function(){ resize(); create(); });
+})();
+
+/* ===== HEADER SCROLL ===== */
+(function() {
+    var header = document.getElementById('header');
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(function() { header.classList.toggle('scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
+    });
+})();
+
+/* ===== MOBILE MENU ===== */
+(function() {
+    var burger = document.getElementById('burger');
+    var nav = document.getElementById('nav');
+    if (!burger||!nav) return;
+    burger.addEventListener('click', function() { burger.classList.toggle('active'); nav.classList.toggle('active'); document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : ''; });
+    nav.querySelectorAll('.nav__link').forEach(function(link) { link.addEventListener('click', function() { burger.classList.remove('active'); nav.classList.remove('active'); document.body.style.overflow=''; }); });
+})();
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) { var t=document.querySelector(this.getAttribute('href')); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});} });
+});
+
+/* ===== COUNTDOWN ===== */
+(function() {
+    var target = new Date('2026-10-17T10:00:00+03:00').getTime();
+    var d=document.getElementById('cd-days'),h=document.getElementById('cd-hours'),m=document.getElementById('cd-mins'),s=document.getElementById('cd-secs');
+    if(!d) return;
+    function upd() {
+        var diff=target-Date.now(); if(diff<=0){d.textContent='000';h.textContent='00';m.textContent='00';s.textContent='00';return;}
+        d.textContent=String(Math.floor(diff/864e5)).padStart(3,'0');
+        h.textContent=String(Math.floor((diff%864e5)/36e5)).padStart(2,'0');
+        m.textContent=String(Math.floor((diff%36e5)/6e4)).padStart(2,'0');
+        s.textContent=String(Math.floor((diff%6e4)/1e3)).padStart(2,'0');
+    }
+    upd(); setInterval(upd,1000);
+})();
+
+/* ===== REVEAL ON SCROLL ===== */
+(function() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e,i) { if(e.isIntersecting){ setTimeout(function(){e.target.classList.add('visible');},i*60); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ===== COUNTER ANIMATION ===== */
+(function() {
+    var counters = document.querySelectorAll('[data-target]');
+    if (!counters.length) return;
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var el=entry.target, tgt=parseInt(el.dataset.target), dur=2000, start=performance.now();
+                function anim(now) { var p=Math.min((now-start)/dur,1); el.textContent=Math.round((1-Math.pow(1-p,3))*tgt).toLocaleString('ru-RU'); if(p<1)requestAnimationFrame(anim); }
+                requestAnimationFrame(anim); obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.3 });
+    counters.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ===== FORM ===== */
+(function() {
+    var form=document.getElementById('partnerForm'), success=document.getElementById('formSuccess');
+    if(!form) return;
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var req=form.querySelectorAll('[required]'), valid=true;
+        req.forEach(function(inp){
+            if(inp.type==='checkbox'&&!inp.checked){valid=false;inp.closest('.form__checkbox').style.color='#ef4444';}
+            else if(!inp.value.trim()){valid=false;inp.style.borderColor='#ef4444';}
+            else{inp.style.borderColor='';if(inp.type==='checkbox')inp.closest('.form__checkbox').style.color='';}
+        });
+        if(!valid) return;
+        var fd=new FormData(form),data={};fd.forEach(function(v,k){data[k]=v;});
+        form.style.display='none'; success.classList.add('visible');
+        console.log('Partnership form submitted:',data);
+    });
+    form.querySelectorAll('.form__input').forEach(function(inp){inp.addEventListener('focus',function(){inp.style.borderColor='';});});
+})();
+</script>
+</body>
+</html>
