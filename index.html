@@ -41,6 +41,7 @@ body {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 0;
+    will-change: opacity;
     background:
         radial-gradient(ellipse 80% 60% at 50% -20%, rgba(114,255,46,0.12) 0%, transparent 60%),
         radial-gradient(ellipse 60% 50% at 80% 80%, rgba(13,158,109,0.08) 0%, transparent 50%),
@@ -66,24 +67,24 @@ body {
 }
 
 /* ===== FLOATING CODE PARTICLES ===== */
-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; will-change: contents; }
 
 /* ===== GLOW ORBS ===== */
 .orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
     z-index: 0;
+    will-change: transform;
     animation: orbFloat 12s ease-in-out infinite alternate;
 }
-.orb--1 { width: 400px; height: 400px; background: rgba(114,255,46,0.07); top: -10%; right: -5%; animation-delay: 0s; }
-.orb--2 { width: 300px; height: 300px; background: rgba(13,158,109,0.06); bottom: -5%; left: -5%; animation-delay: -4s; }
-.orb--3 { width: 200px; height: 200px; background: rgba(58,144,32,0.05); top: 50%; left: 50%; animation-delay: -8s; }
+.orb--1 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(114,255,46,0.09) 0%, rgba(114,255,46,0) 70%); top: -10%; right: -5%; animation-delay: 0s; }
+.orb--2 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(13,158,109,0.08) 0%, rgba(13,158,109,0) 70%); bottom: -5%; left: -5%; animation-delay: -4s; }
+.orb--3 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(58,144,32,0.07) 0%, rgba(58,144,32,0) 70%); top: 50%; left: 50%; animation-delay: -8s; }
 @keyframes orbFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -20px) scale(1.05); }
-    66% { transform: translate(-20px, 15px) scale(0.95); }
-    100% { transform: translate(10px, -10px) scale(1.02); }
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    33% { transform: translate3d(30px, -20px, 0) scale(1.05); }
+    66% { transform: translate3d(-20px, 15px, 0) scale(0.95); }
+    100% { transform: translate3d(10px, -10px, 0) scale(1.02); }
 }
 
 /* ===== NOISE TEXTURE ===== */
@@ -140,14 +141,13 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0
 .selector__logo svg {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 0 30px rgba(114,255,46,0.2));
 }
 .selector__logo .logo-bracket {
     animation: bracketGlow 3s ease-in-out infinite alternate;
 }
 @keyframes bracketGlow {
-    0% { filter: drop-shadow(0 0 4px rgba(114,255,46,0.3)); }
-    100% { filter: drop-shadow(0 0 12px rgba(114,255,46,0.6)); }
+    0% { opacity: 0.85; }
+    100% { opacity: 1; text-shadow: 0 0 18px rgba(114,255,46,0.5); }
 }
 .selector__logo-sub {
     display: flex;
@@ -244,8 +244,8 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0
     display: flex;
     flex-direction: column;
     gap: 12px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 /* Top glow line */
@@ -488,7 +488,7 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0
     function re(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;}
     function cr(){
         s=[];
-        var n=Math.min(Math.floor(w*h/22000),55);
+        var n=Math.min(Math.floor(w*h/32000),35);
         for(var i=0;i<n;i++)s.push({
             x:Math.random()*w,
             y:Math.random()*h,
